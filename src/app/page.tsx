@@ -1,23 +1,26 @@
+"use client";
 import DayWorkoutCard from "../components/Workouts/DayWorkoutCard";
+import WorkoutModal from "../components/Workouts/WorkoutModal";
 import WorkoutSection from "../components/Workouts/WorkoutSection";
+import { useModal } from "../context/ModalContext";
 import { workoutTest } from "../util/testWorkouts";
 
 export default function Home() {
+    const { isWorkoutModalOpen } = useModal();
+    console.log(isWorkoutModalOpen);
     return (
-        <WorkoutSection>
-            <div className="flex flex-col gap-[20px]">
-                <h2 className="text-2xl font-medium font-mont">Peito</h2>
-                <div className="h-fit overflow-x-scroll flex  flex-col gap-5 pb-10 ">
-                    {workoutTest.map(({ exercise, pr, series }, i) => (
-                        <DayWorkoutCard
-                            key={i}
-                            exercise={exercise}
-                            pr={pr}
-                            series={series}
-                        />
-                    ))}
-                </div>
-            </div>
-        </WorkoutSection>
+        <>
+            <WorkoutSection workoutOfTheDay="Peito">
+                {workoutTest.map(({ exercise, pr, series }, i) => (
+                    <DayWorkoutCard
+                        key={i}
+                        exercise={exercise}
+                        pr={pr}
+                        series={series}
+                    />
+                ))}
+            </WorkoutSection>
+            {isWorkoutModalOpen && <WorkoutModal />}
+        </>
     );
 }

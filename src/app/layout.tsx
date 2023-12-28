@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Montserrat, Noto_Sans_Myanmar } from "next/font/google";
+import { Inter, Noto_Sans_Myanmar } from "next/font/google";
 import "./globals.css";
+
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
+import Providers from "../providers/Providers";
 
 const inter = Inter({ subsets: ["latin"] });
 const mont = Noto_Sans_Myanmar({
@@ -27,9 +29,11 @@ export default function RootLayout({
             <body
                 className={`${inter.className} ${mont.variable} bg-[#080d1f] text-white`}
             >
-                <Header />
-                {children}
-                <Footer />
+                <Providers>
+                    <Header />
+                    {children}
+                    <Footer />
+                </Providers>
             </body>
         </html>
     );
