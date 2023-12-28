@@ -7,7 +7,7 @@ export default function Home() {
         <WorkoutSection>
             <div className="flex flex-col gap-[20px]">
                 <h2 className="text-2xl font-medium font-mont">Peito</h2>
-                <div className="h-fit overflow-x-scroll flex  flex-col gap-5 ">
+                <div className="h-fit overflow-x-scroll flex  flex-col gap-5 pb-10 ">
                     {workoutTest.map(({ exercise, pr, series }, i) => (
                         <DayWorkoutCard
                             key={i}
