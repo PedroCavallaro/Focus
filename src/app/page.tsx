@@ -1,3 +1,9 @@
+import WorkoutSection from "../components/Workouts/WorkoutSection";
+
 export default function Home() {
-    return <></>;
+    return (
+        <WorkoutSection>
+            <p>oi</p>
+        </WorkoutSection>
+    );
 }
