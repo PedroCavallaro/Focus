@@ -16,6 +16,37 @@ const config: Config = {
             fontFamily: {
                 mont: "var(--font-mont)",
             },
+            keyframes: {
+                open: {
+                    "0%": {
+                        height: "0px",
+                        display: "flex",
+                    },
+                    "100%": {
+                        height: "50rem",
+                        display: "block",
+                    },
+                },
+                modal: {
+                    "0%": {
+                        height: "50rem",
+                        display: "block",
+                    },
+                    "100%": {
+                        height: "0px",
+                        display: "hidden",
+                    },
+                },
+                close: {
+                    "0%": { zIndex: "50" },
+                    "100%": { zIndex: "-10" },
+                },
+            },
+            animation: {
+                modal: "modal 0.75s",
+                close: "close 1s",
+                open: "open 0.5s",
+            },
         },
     },
     plugins: [],
