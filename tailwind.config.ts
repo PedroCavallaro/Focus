@@ -23,13 +23,13 @@ const config: Config = {
                         display: "flex",
                     },
                     "100%": {
-                        height: "50rem",
+                        height: "45rem",
                         display: "block",
                     },
                 },
                 modal: {
                     "0%": {
-                        height: "50rem",
+                        height: "45rem",
                         display: "block",
                     },
                     "100%": {

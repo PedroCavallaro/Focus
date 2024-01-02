@@ -1,7 +1,7 @@
 import { useWorkOut } from "@/src/context/WorkoutContext";
 import { DaysOfWeek, daysOfTheWeek } from "@/src/util/date";
 import { ReactNode } from "react";
-
+import { GoArrowSwitch } from "react-icons/go";
 interface WorkoutSectionProps {
     children: ReactNode;
     workoutOfTheDay: string;
@@ -33,9 +33,14 @@ export default function WorkoutSection({
             </div>
             <div className="flex flex-col gap-[20px]">
                 {!isAll && (
-                    <h2 className="text-2xl font-medium font-mont">
-                        {workoutOfTheDay}
-                    </h2>
+                    <div className="flex gap-3 items-center">
+                        <h2 className="text-2xl font-medium font-mont">
+                            {workoutOfTheDay}
+                        </h2>
+                        <button className="rounded-full p-2 mb-1 bg-white text-black ">
+                            <GoArrowSwitch />
+                        </button>
+                    </div>
                 )}
 
                 {children}

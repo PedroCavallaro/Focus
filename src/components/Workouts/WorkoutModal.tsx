@@ -15,7 +15,7 @@ export default function WorkoutModal({}) {
             <div
                 className={`fixed bottom-0 w-full bg-white text-black rounded-tl-3xl rounded-tr-3xl  p-4 ${
                     isWorkoutModalOpen
-                        ? "block  animate-open h-[50rem]"
+                        ? "block  animate-open h-[45rem]"
                         : "hidden animate-modal h-0"
                 }`}
             >
