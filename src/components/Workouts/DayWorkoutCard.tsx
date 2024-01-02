@@ -1,6 +1,7 @@
 import { WorkoutSeries } from "@/src/@types/types";
 import { HiOutlinePencil } from "react-icons/hi";
 import DayWorkoutListItem from "./DayWorkoutListItem";
+import Image from "next/image";
 
 interface DayWorkoutCardProps {
     exercise: string;
@@ -35,7 +36,13 @@ export default function DayWorkoutCard({
                     ))}
                 </ul>
                 <div>
-                    <div className="w-36 h-full bg-white  rounded-[5px]" />
+                    <Image
+                        src={"/barrafixa.gif"}
+                        alt="back"
+                        width={300}
+                        height={300}
+                        className="w-36 h-full bg-white  rounded-[5px]"
+                    />
                 </div>
             </div>
         </div>

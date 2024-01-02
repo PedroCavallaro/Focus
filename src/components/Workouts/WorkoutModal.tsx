@@ -1,6 +1,6 @@
 "use client";
 import { useModal } from "@/src/context/ModalContext";
-import AddExerciseForm from "./AddExerciseForm";
+import AddExerciseForm from "./forms/AddExerciseForm";
 
 export default function WorkoutModal({}) {
     const { openWorkoutModal, isWorkoutModalOpen } = useModal();

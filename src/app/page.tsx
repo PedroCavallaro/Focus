@@ -14,7 +14,7 @@ export default function Home() {
                 {isAll ? (
                     <>
                         {workoutTest.map((e, i) => (
-                            <div key={i}>
+                            <div className="flex flex-col gap-2" key={i}>
                                 <p>Segunda</p>
                                 <WorkoutCard />
                             </div>

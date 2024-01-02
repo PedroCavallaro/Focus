@@ -28,7 +28,7 @@ export default function WorkoutSection({
                 )}
 
                 <button onClick={switchView} className="text-zinc-500">
-                    {isAll ? "Voltar" : "Mostrar todos"}
+                    {isAll ? "Treino do dia" : "Meus treinos"}
                 </button>
             </div>
             <div className="flex flex-col gap-[20px]">
