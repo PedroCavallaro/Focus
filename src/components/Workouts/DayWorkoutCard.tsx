@@ -5,12 +5,14 @@ import Image from "next/image";
 
 interface DayWorkoutCardProps {
     exercise: string;
+    gif: string;
     pr: string;
     series: Array<WorkoutSeries>;
 }
 export default function DayWorkoutCard({
     exercise,
     pr,
+    gif,
     series,
 }: DayWorkoutCardProps) {
     return (
@@ -37,11 +39,13 @@ export default function DayWorkoutCard({
                 </ul>
                 <div>
                     <Image
-                        src={"/barrafixa.gif"}
+                        src={gif}
                         alt="back"
-                        width={300}
-                        height={300}
-                        className="w-36 h-full bg-white  rounded-[5px]"
+                        width={144}
+                        height={144}
+                        className=" rounded-[5px] object-cover"
+                        loading="eager"
+                        priority
                     />
                 </div>
             </div>

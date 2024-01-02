@@ -43,7 +43,7 @@ export default function FooterButton() {
                     src={muscleIcon}
                     alt="made by Darius Dan https://www.flaticon.com/authors/darius-dan"
                     width={40}
-                    height={40}
+                    height={43}
                 />
             </button>
         </div>

@@ -11,27 +11,33 @@ export default function Home() {
     return (
         <>
             <WorkoutSection workoutOfTheDay="Peito">
-                {isAll ? (
-                    <>
-                        {workoutTest.map((e, i) => (
-                            <div className="flex flex-col gap-2" key={i}>
-                                <p>Segunda</p>
-                                <WorkoutCard />
-                            </div>
-                        ))}
-                    </>
-                ) : (
-                    <>
-                        {workoutTest.map(({ exercise, pr, series }, i) => (
-                            <DayWorkoutCard
-                                key={i}
-                                exercise={exercise}
-                                pr={pr}
-                                series={series}
-                            />
-                        ))}
-                    </>
-                )}
+                <div
+                    className={`h-fit overflow-x-scroll  gap-5 pb-10 ${
+                        isAll ? "flex  flex-col" : "hidden"
+                    }`}
+                >
+                    {workoutTest.map((e, i) => (
+                        <div className="flex flex-col gap-2" key={i}>
+                            <p>Segunda</p>
+                            <WorkoutCard />
+                        </div>
+                    ))}
+                </div>
+                <div
+                    className={`h-fit overflow-x-scroll  gap-5 pb-10 ${
+                        isAll ? "hidden" : "flex flex-col"
+                    }`}
+                >
+                    {workoutTest.map(({ exercise, pr, series, gif }, i) => (
+                        <DayWorkoutCard
+                            key={i}
+                            gif={gif}
+                            exercise={exercise}
+                            pr={pr}
+                            series={series}
+                        />
+                    ))}
+                </div>
             </WorkoutSection>
             <WorkoutModal />
         </>

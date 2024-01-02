@@ -37,9 +37,8 @@ export default function WorkoutSection({
                         {workoutOfTheDay}
                     </h2>
                 )}
-                <div className="h-fit overflow-x-scroll flex  flex-col gap-5 pb-10 ">
-                    {children}
-                </div>
+
+                {children}
             </div>
         </main>
     );
