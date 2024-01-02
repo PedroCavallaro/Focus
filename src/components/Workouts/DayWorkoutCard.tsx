@@ -16,7 +16,7 @@ export default function DayWorkoutCard({
     series,
 }: DayWorkoutCardProps) {
     return (
-        <div className="bg-zinc-50 bg-blend-darken text-black rounded-[10px] p-3 min-h-[15rem] max-h-[18rem]  w-full flex flex-col gap-5">
+        <div className="bg-white bg-blend-darken text-black rounded-[10px] p-3 min-h-[15rem] max-h-[18rem]  w-full flex flex-col gap-5">
             <div className="flex justify-between">
                 <div>
                     <h3 className="text-lg font-bold">{exercise}</h3>
