@@ -10,11 +10,3 @@ export const daysOfTheWeek = {
     "7": "Sabado",
 };
 
-const model = {
-    exercise: "Supino Reto",
-    pr: "30kg",
-    series: {
-        text: "10 reps",
-        kg: "22,5kg",
-    },
-};

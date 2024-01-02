@@ -1,5 +1,6 @@
 "use client";
 import { useModal } from "@/src/context/ModalContext";
+import AddExerciseForm from "./AddExerciseForm";
 
 export default function WorkoutModal({}) {
     const { openWorkoutModal, isWorkoutModalOpen } = useModal();
@@ -26,9 +27,7 @@ export default function WorkoutModal({}) {
                         X
                     </button>
                 </div>
-                <div>
-                    <h3 className="text-lg font-bold">Adicionar Exercicio</h3>
-                </div>
+                <AddExerciseForm workout="Peito" />
             </div>
         </div>
     );
