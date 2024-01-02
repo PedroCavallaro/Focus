@@ -16,7 +16,7 @@ export default function DayWorkoutCard({
     series,
 }: DayWorkoutCardProps) {
     return (
-        <div className="bg-[#d8dbe2] bg-blend-darken text-black rounded-[10px] p-3 min-h-[15rem] max-h-[18rem]  w-full flex flex-col gap-5">
+        <div className="bg-zinc-50 bg-blend-darken text-black rounded-[10px] p-3 min-h-[15rem] max-h-[18rem]  w-full flex flex-col gap-5">
             <div className="flex justify-between">
                 <div>
                     <h3 className="text-lg font-bold">{exercise}</h3>
@@ -27,7 +27,7 @@ export default function DayWorkoutCard({
                 </button>
             </div>
             <div className="flex justify-between">
-                <ul className="text-md font-light flex flex-col gap-[12px]">
+                <ul className="text-[15px] font-light flex flex-col gap-[12px]">
                     {series.map(({ kg, text }, i) => (
                         <DayWorkoutListItem
                             key={i}
@@ -45,7 +45,6 @@ export default function DayWorkoutCard({
                         height={144}
                         className=" rounded-[5px] object-cover"
                         loading="eager"
-                        priority
                     />
                 </div>
             </div>
