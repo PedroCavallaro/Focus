@@ -1,27 +1,30 @@
 "use client";
 import DayWorkoutCard from "../components/Workouts/DayWorkoutCard";
-import WorkoutCard from "../components/Workouts/WorkoutCard";
 import WorkoutModal from "../components/Workouts/WorkoutModal";
 import WorkoutSection from "../components/Workouts/WorkoutSection";
 import { useWorkOut } from "../context/WorkoutContext";
 import { workoutTest } from "../util/testWorkouts";
+import dynamic from "next/dynamic";
+
+const DynamicAllWorkOutSection = dynamic(
+    () => import("../components/Workouts/AllWorkOutsSection"),
+    {
+        loading: () => <p>Carregando...</p>,
+    }
+);
 
 export default function Home() {
     const { isAll } = useWorkOut();
     return (
         <>
+            <WorkoutModal />
             <WorkoutSection workoutOfTheDay="Peito">
                 <div
                     className={`h-fit overflow-x-scroll  gap-5 pb-10 ${
                         isAll ? "flex  flex-col" : "hidden"
                     }`}
                 >
-                    {workoutTest.map((e, i) => (
-                        <div className="flex flex-col gap-2" key={i}>
-                            <p>Segunda</p>
-                            <WorkoutCard />
-                        </div>
-                    ))}
+                    <DynamicAllWorkOutSection workouts={workoutTest} />
                 </div>
                 <div
                     className={`h-fit overflow-x-scroll  gap-5 pb-10 ${
@@ -39,7 +42,6 @@ export default function Home() {
                     ))}
                 </div>
             </WorkoutSection>
-            <WorkoutModal />
         </>
     );
 }

@@ -24,10 +24,10 @@ export default function WorkoutSection({
                         }
                     </p>
                 ) : (
-                    <p className="text-lg">Treinos</p>
+                    <p className="text-lg  font-medium">Treinos</p>
                 )}
 
-                <button onClick={switchView} className="text-zinc-500">
+                <button onClick={switchView} className="text-zinc-500 ">
                     {isAll ? "Treino do dia" : "Meus treinos"}
                 </button>
             </div>
