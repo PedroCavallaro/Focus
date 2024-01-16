@@ -3,20 +3,19 @@ import { InputHTMLAttributes, forwardRef } from "react";
 type FloatingLabelProps = InputHTMLAttributes<HTMLInputElement> & {
     inputType: string;
     label: string;
+    errors?: string;
 };
 
 // eslint-disable-next-line react/display-name
 export const FloatingLabelInput = forwardRef<
     HTMLInputElement,
     FloatingLabelProps
->(({ inputType, label, ...props }, ref) => {
+>(({ inputType, label, errors, ...props }, ref) => {
     return (
         <div className="mb-5">
             <div className="relative z-0 w-full mb-5 group">
                 <input
                     type={inputType}
-                    name="floating_email"
-                    id="floating_email"
                     className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" "
                     required
@@ -29,6 +28,11 @@ export const FloatingLabelInput = forwardRef<
                 >
                     {label}
                 </label>
+                {errors && (
+                    <span className="text-red-500 dark:text-red-400 text-sm">
+                        {errors}
+                    </span>
+                )}
             </div>
         </div>
     );
