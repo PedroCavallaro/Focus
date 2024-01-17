@@ -17,6 +17,14 @@ const config: Config = {
                 mont: "var(--font-mont)",
             },
             keyframes: {
+                error_toast: {
+                    "0%": {
+                        right: "-100%",
+                    },
+                    "100%": {
+                        right: "0px",
+                    },
+                },
                 open: {
                     "0%": {
                         height: "0px",
@@ -46,6 +54,7 @@ const config: Config = {
                 modal: "modal 0.75s",
                 close: "close 1s",
                 open: "open 0.5s",
+                error_toast: "error_toast 0.75s",
             },
         },
     },

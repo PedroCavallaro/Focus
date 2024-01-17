@@ -6,9 +6,10 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useAuthForm } from "@/src/hooks/useAuthForm";
+import { useEffect } from "react";
 
 export function AuthForm({ type }: { type: AuthType }) {
-    const { authFunctions, buttonText, schema } = useAuthForm(type);
+    const { showToast, onSubmit, buttonText, schema } = useAuthForm(type);
 
     type FormData = z.infer<typeof schema> & {
         type: "register";
@@ -27,9 +28,9 @@ export function AuthForm({ type }: { type: AuthType }) {
     return (
         <form
             className="w-[20rem] flex flex-col  "
-            onSubmit={handleSubmit(async ({ email, name, password }) => {
-                await authFunctions[type](email, password, name);
-            })}
+            onSubmit={handleSubmit(({ email, name, password }) =>
+                onSubmit(type, email, password, name)
+            )}
         >
             {type === "register" && (
                 <FloatingLabelInput
@@ -54,7 +55,7 @@ export function AuthForm({ type }: { type: AuthType }) {
 
             <button
                 type="submit"
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                className="text-white  bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
                 {buttonText}
             </button>

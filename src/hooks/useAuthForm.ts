@@ -1,7 +1,9 @@
-import { AxiosResponse } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import { AuthType } from "../app/auth/[type]/page";
 import { loginSchema, registerSchema } from "../constants/auth";
 import { api } from "../lib/api";
+import { showToast } from "../lib/swal";
+import { unknown } from "zod";
 
 type AuthFunctions = {
     [key in AuthType]: (
@@ -19,22 +21,25 @@ export const useAuthForm = <T extends AuthType>(type: T) => {
 
     const authFunctions: AuthFunctions = {
         login: async (email: string, password: string, name = "") => {
-            const res: AxiosResponse<AuthResponse> = await api.post(
-                "/auth/sigin",
-                {
-                    email,
-                    password,
+            try {
+                const res: AxiosResponse<AuthResponse> = await api.post(
+                    "/auth/sigin",
+                    {
+                        email,
+                        password,
+                    }
+                );
+                const { data } = res;
+                if (data.message) {
+                    console.log(data.message);
                 }
-            );
-            const { data } = res;
-
-            if (data.message) {
-                console.log(data.message);
+                console.log(data?.token);
+            } catch (err: unknown | AxiosError<AuthResponse>) {
+                showToast("err");
             }
-            console.log(data?.token);
         },
         register: async (email: string, password: string, name = "") => {
-            console.log("registor");
+            showToast("asdasda asd as da");
             const res = await api.post("/auth/signup", {
                 email,
                 password,
@@ -43,10 +48,19 @@ export const useAuthForm = <T extends AuthType>(type: T) => {
             console.log(res);
         },
     };
+    const onSubmit = async (
+        type: AuthType,
+        email: string,
+        password: string,
+        name: string
+    ) => {
+        await authFunctions[type](email, password, name);
+    };
 
     return {
         schema,
         buttonText,
-        authFunctions,
+        onSubmit,
+        showToast,
     };
 };
