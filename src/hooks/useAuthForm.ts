@@ -1,66 +1,56 @@
 import { AxiosError, AxiosResponse } from "axios";
 import { AuthType } from "../app/auth/[type]/page";
 import { loginSchema, registerSchema } from "../constants/auth";
-import { api } from "../lib/api";
+import { clientApi } from "../lib/api";
 import { showToast } from "../lib/swal";
-import { unknown } from "zod";
+import { useRouter } from "next/navigation";
+import { ZodType } from "zod";
+import { useState } from "react";
 
-type AuthFunctions = {
-    [key in AuthType]: (
-        email: string,
-        password: string,
-        name?: string
-    ) => Promise<void>;
+type AuthFormInformation = {
+    [key in AuthType]: {
+        schema: ZodType<any, any, any>;
+        buttonText: string;
+    };
 };
 
 type AuthResponse = { token: string } & { message: string };
 
 export const useAuthForm = <T extends AuthType>(type: T) => {
-    const schema = type === "login" ? loginSchema : registerSchema;
-    const buttonText = type === "login" ? "Entrar" : "Cadastrar";
+    const router = useRouter();
 
-    const authFunctions: AuthFunctions = {
-        login: async (email: string, password: string, name = "") => {
-            try {
-                const res: AxiosResponse<AuthResponse> = await api.post(
-                    "/auth/sigin",
-                    {
-                        email,
-                        password,
-                    }
-                );
-                const { data } = res;
-                if (data.message) {
-                    console.log(data.message);
-                }
-                console.log(data?.token);
-            } catch (err: unknown | AxiosError<AuthResponse>) {
-                showToast("err");
-            }
+    const authFormInfo: AuthFormInformation = {
+        login: {
+            schema: loginSchema,
+            buttonText: "login",
         },
-        register: async (email: string, password: string, name = "") => {
-            showToast("asdasda asd as da");
-            const res = await api.post("/auth/signup", {
-                email,
-                password,
-                name,
-            });
-            console.log(res);
+        register: {
+            schema: registerSchema,
+            buttonText: "Cadastrar",
         },
     };
     const onSubmit = async (
-        type: AuthType,
+        type: T,
         email: string,
         password: string,
         name: string
     ) => {
-        await authFunctions[type](email, password, name);
+        const res: AxiosResponse<AuthResponse> = await clientApi.post(
+            `api/${type}`,
+            {
+                email,
+                password,
+                name,
+            }
+        );
+        if (res.data.message) {
+            showToast(res.data.message);
+        }
+        router.push("/");
     };
 
     return {
-        schema,
-        buttonText,
+        authFormInfo,
         onSubmit,
-        showToast,
     };
 };

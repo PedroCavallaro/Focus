@@ -8,3 +8,4 @@ export type WorkoutSeries = {
     text: string;
     kg: string;
 };
+export type AuthResponse = { token: string } & { message: string };
