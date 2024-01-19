@@ -1,11 +1,9 @@
-import { AxiosError, AxiosResponse } from "axios";
+import { AxiosResponse } from "axios";
 import { AuthType } from "../app/auth/[type]/page";
 import { loginSchema, registerSchema } from "../constants/auth";
 import { clientApi } from "../lib/api";
 import { showToast } from "../lib/swal";
-import { useRouter } from "next/navigation";
 import { ZodType } from "zod";
-import { useState } from "react";
 
 type AuthFormInformation = {
     [key in AuthType]: {
@@ -17,12 +15,10 @@ type AuthFormInformation = {
 type AuthResponse = { token: string } & { message: string };
 
 export const useAuthForm = <T extends AuthType>(type: T) => {
-    const router = useRouter();
-
     const authFormInfo: AuthFormInformation = {
         login: {
             schema: loginSchema,
-            buttonText: "login",
+            buttonText: "Entrar",
         },
         register: {
             schema: registerSchema,
@@ -45,8 +41,9 @@ export const useAuthForm = <T extends AuthType>(type: T) => {
         );
         if (res.data.message) {
             showToast(res.data.message);
+            return;
         }
-        router.push("/");
+        window.location.href = "http://localhost:3000";
     };
 
     return {

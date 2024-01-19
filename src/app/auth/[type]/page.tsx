@@ -1,10 +1,14 @@
 import { AuthForm } from "@/src/components/Auth/AuthForm";
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export type AuthType = "login" | "register";
 
 export default function page({ params }: { params: { type: AuthType } }) {
     if (params.type !== "register" && params.type !== "login") {
+        redirect("/");
+    }
+    if (cookies().get("token")) {
         redirect("/");
     }
     const title = params.type === "login" ? "Fazer login" : "Criar conta";
