@@ -16,15 +16,17 @@ export default function DayWorkoutCard({
     series,
 }: DayWorkoutCardProps) {
     return (
-        <div className="bg-white bg-blend-darken text-black rounded-[10px] p-3 min-h-[15rem] max-h-[18rem]  w-full flex flex-col gap-5">
-            <div className="flex justify-between">
-                <div>
-                    <h3 className="text-lg font-bold">{exercise}</h3>
-                    <p>PR: {pr}</p>
+        <div className="text-white bg-blend-darken  rounded-[10px] min-h-[15rem] max-h-[20rem]  w-full flex flex-col gap-5">
+            <div>
+                <div className="flex justify-between items-center py-2 border-b-main ">
+                    <div>
+                        <h3 className="text-2xl ">{exercise}</h3>
+                    </div>
+                    <button className=" -top-4 p-2 bg-orange-primary  flex items-center text-black justify-center rounded-lg">
+                        <HiOutlinePencil />
+                    </button>
                 </div>
-                <button className="relative -top-4">
-                    <HiOutlinePencil />
-                </button>
+                <p className="text-sm mt-2 font-thin">PR {pr}</p>
             </div>
             <div className="flex justify-between">
                 <ul className="text-[15px] font-light flex flex-col gap-[12px]">
@@ -41,8 +43,8 @@ export default function DayWorkoutCard({
                     <Image
                         src={gif}
                         alt="back"
-                        width={144}
-                        height={144}
+                        width={150}
+                        height={150}
                         className=" rounded-[5px] object-cover"
                         loading="eager"
                     />

@@ -16,32 +16,29 @@ const DynamicAllWorkOutSection = dynamic(
 export default function Home() {
     const { isAll } = useWorkOut();
     return (
-        <>
-            <WorkoutModal />
-            <WorkoutSection workoutOfTheDay="Peito">
-                <div
-                    className={`h-fit overflow-x-scroll  gap-5 pb-10 ${
-                        isAll ? "flex  flex-col" : "hidden"
-                    }`}
-                >
-                    <DynamicAllWorkOutSection workouts={workoutTest} />
-                </div>
-                <div
-                    className={`h-fit overflow-x-scroll  gap-5 pb-10 ${
-                        isAll ? "hidden" : "flex flex-col"
-                    }`}
-                >
-                    {workoutTest.map(({ exercise, pr, series, gif }, i) => (
-                        <DayWorkoutCard
-                            key={i}
-                            gif={gif}
-                            exercise={exercise}
-                            pr={pr}
-                            series={series}
-                        />
-                    ))}
-                </div>
-            </WorkoutSection>
-        </>
+        <WorkoutSection workoutOfTheDay="Peito">
+            <div
+                className={`h-fit overflow-x-scroll  gap-5 pb-10 ${
+                    isAll ? "flex  flex-col" : "hidden"
+                }`}
+            >
+                <DynamicAllWorkOutSection workouts={workoutTest} />
+            </div>
+            <div
+                className={`h-fit overflow-x-scroll  gap-10 pb-10 ${
+                    isAll ? "hidden" : "flex flex-col"
+                }`}
+            >
+                {workoutTest.map(({ exercise, pr, series, gif }, i) => (
+                    <DayWorkoutCard
+                        key={i}
+                        gif={gif}
+                        exercise={exercise}
+                        pr={pr}
+                        series={series}
+                    />
+                ))}
+            </div>
+        </WorkoutSection>
     );
 }

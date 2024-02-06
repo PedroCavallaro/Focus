@@ -26,11 +26,10 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     const isAuth = cookies().get("token");
-
     return (
         <html lang="pt-br">
             <body
-                className={`${inter.className} ${mont.variable} bg-[#080d1f] text-white`}
+                className={`${inter.className} ${mont.variable} bg-black text-white`}
             >
                 <Providers>
                     <Header isAuth={isAuth} />

@@ -16,6 +16,14 @@ const config: Config = {
             fontFamily: {
                 mont: "var(--font-mont)",
             },
+            borderWidth: {
+                main: "1px",
+            },
+            colors: {
+                orange: {
+                    primary: "#FF7A00",
+                },
+            },
             keyframes: {
                 error_toast: {
                     "0%": {

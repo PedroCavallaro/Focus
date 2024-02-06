@@ -31,20 +31,17 @@ export default function WorkoutSection({
                     {isAll ? "Treino do dia" : "Meus treinos"}
                 </button>
             </div>
-            <div className="flex flex-col gap-[20px]">
-                {!isAll && (
-                    <div className="flex gap-3 items-center">
-                        <h2 className="text-2xl font-medium font-mont">
-                            {workoutOfTheDay}
-                        </h2>
-                        <button className="rounded-full p-2 mb-1 bg-white text-black ">
-                            <GoArrowSwitch />
-                        </button>
-                    </div>
-                )}
-
-                {children}
-            </div>
+            {!isAll && (
+                <div className="flex gap-3 items-center">
+                    <h2 className="text-2xl font-medium font-mont">
+                        {workoutOfTheDay}
+                    </h2>
+                    <button className="rounded-full p-2 mb-1 bg-orange-primary text-black ">
+                        <GoArrowSwitch />
+                    </button>
+                </div>
+            )}
+            <div className="flex flex-col gap-[30px] mt-5">{children}</div>
         </main>
     );
 }

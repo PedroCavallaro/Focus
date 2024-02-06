@@ -12,7 +12,7 @@ export default function DayWorkoutListItem({
         <>
             <li className="flex gap-2">
                 <input type="checkbox" name="" id="" />
-                <p>{`${index} serie: ${reps} x ${kg}`}</p>
+                <p className="text-sm">{`${index} serie: ${reps} x ${kg}`}</p>
                 {/* 1 serie: 10 reps x 22,5kg */}
             </li>
         </>
