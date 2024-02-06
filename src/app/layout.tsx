@@ -6,6 +6,8 @@ import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
 import Providers from "../providers/Providers";
 import { cookies } from "next/headers";
+import { headers } from "next/headers";
+
 import { getUser } from "../util/user";
 const inter = Inter({ subsets: ["latin"] });
 const mont = Noto_Sans_Myanmar({
@@ -26,6 +28,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     const isAuth = cookies().get("token");
+
     return (
         <html lang="pt-br">
             <body

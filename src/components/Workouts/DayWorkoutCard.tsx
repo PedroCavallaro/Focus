@@ -20,7 +20,7 @@ export default function DayWorkoutCard({
             <div>
                 <div className="flex justify-between items-center py-2 border-b-main ">
                     <div>
-                        <h3 className="text-2xl ">{exercise}</h3>
+                        <h3 className="text-2xl font-light ">{exercise}</h3>
                     </div>
                     <button className=" -top-4 p-2 bg-orange-primary  flex items-center text-black justify-center rounded-lg">
                         <HiOutlinePencil />

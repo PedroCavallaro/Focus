@@ -1,6 +1,5 @@
 "use client";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { GoChevronRight, GoChevronDown } from "react-icons/go";
 import { CgGym } from "react-icons/cg";
 import { useState } from "react";
 import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
@@ -33,7 +32,7 @@ export default function Header({
                 ) : (
                     <Link
                         href="/auth/login"
-                        className="text-black px-2 bg-white rounded-full py-2 text-sm"
+                        className="text-black px-2 bg-orange-primary rounded-full py-2 text-sm"
                     >
                         Login
                     </Link>
