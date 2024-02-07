@@ -1,12 +1,13 @@
 "use client";
 import { ReactNode } from "react";
-import { ModalProvider } from "../context/ModalContext";
 import { WorkOutProvider } from "../context/WorkoutContext";
+import { QueryClientProvider } from "react-query";
+import { queryClient } from "../lib/queryClient";
 
 export default function Providers({ children }: { children: ReactNode }) {
     return (
-        <ModalProvider>
+        <QueryClientProvider client={queryClient}>
             <WorkOutProvider>{children}</WorkOutProvider>
-        </ModalProvider>
+        </QueryClientProvider>
     );
 }

@@ -9,6 +9,7 @@ interface DayWorkoutCardProps {
     pr: string;
     series: Array<WorkoutSeries>;
 }
+// exerciseSet
 export default function DayWorkoutCard({
     exercise,
     pr,
