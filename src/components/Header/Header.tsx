@@ -26,7 +26,9 @@ export default function Header({
                 >
                     <RxHamburgerMenu size={35} />
                 </button>
-                <CgGym size={30} />
+                <Link href={"/"}>
+                    <CgGym size={30} />
+                </Link>
                 {isAuth ? (
                     <div className="rounded-full w-12 h-12 bg-white"></div>
                 ) : (

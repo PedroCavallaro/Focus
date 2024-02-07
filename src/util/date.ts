@@ -7,6 +7,5 @@ export const daysOfTheWeek = {
     "3": "Quarta-Feira",
     "4": "Quinta-Feira",
     "5": "Sexta-Feira",
-    "7": "Sabado",
+    "6": "Sabado",
 };
-

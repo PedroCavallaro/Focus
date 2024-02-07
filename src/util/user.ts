@@ -1,5 +1,6 @@
 import { jwtDecode } from "jwt-decode";
 import { parseCookies } from "nookies";
+import { string } from "zod";
 
 type User = {
     id: string;
@@ -13,4 +14,21 @@ export const getUser = () => {
         return decodedToken;
     }
     throw new Error("User not authenticated");
+};
+
+const workout = {
+    name: "",
+    day: 0,
+    workout: [
+        {
+            1: {
+                info: [
+                    {
+                        kg: 1,
+                        reps: 1,
+                    },
+                ],
+            },
+        },
+    ],
 };
