@@ -1,5 +1,6 @@
 import { useNewWorkout } from "@/src/hooks/useNewWorkout";
 import Image from "next/image";
+import { Input } from "../Input";
 
 interface ExerciseCardProps {
     id: string;
@@ -34,8 +35,8 @@ export default function ExerciseCard({
                     alt={exercise}
                 />
             </div>
-            <div className="abolute w-full h-[20rem] bg-black flex flex-col">
-                <div className="grid grid-cols-3 gap-x-20 px-2">
+            <div className="abolute w-full h-[20rem] bg-white text-black flex flex-col">
+                <div className="grid grid-cols-3 gap-x-20 px-2 ">
                     <p>Serie</p>
                     <p>Reps</p>
                     <p>KG</p>
@@ -43,8 +44,8 @@ export default function ExerciseCard({
                         return (
                             <>
                                 <p>{i + 1}</p>
-                                <input type="text" key={i} />
-                                <input type="text" key={i} />
+                                <Input />
+                                <Input />
                             </>
                         );
                     })}

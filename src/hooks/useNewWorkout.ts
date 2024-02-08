@@ -22,7 +22,7 @@ async function getExercises() {
     return data;
 }
 export function useNewWorkout() {
-    const [isMuscleSelected, setIsMuscleSelected] = useState(-1);
+    const [muscleId, setMuscleId] = useState(-1);
     const [exercise, setExercise] = useState({});
     const { data, isLoading } = useQuery<ExerciseResponse>(
         "exercises",
@@ -30,7 +30,7 @@ export function useNewWorkout() {
     );
 
     const handleClick = (muscleIndex: number) => {
-        setIsMuscleSelected((prev) => (prev = muscleIndex));
+        setMuscleId((prev) => (prev = muscleIndex));
     };
     const handleExerciseClick = (name: string, id: string) => {
         setExercise((prev) => (prev = { ...prev, name, id }));
@@ -38,7 +38,7 @@ export function useNewWorkout() {
     return {
         exercise,
         handleExerciseClick,
-        isMuscleSelected,
+        muscleId,
         handleClick,
         data,
         isLoading,
