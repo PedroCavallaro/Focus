@@ -1,25 +1,14 @@
 "use client";
 import { daysOfTheWeek } from "@/src/util/date";
-import { ReactNode, useState } from "react";
-export default function WorkoutInputs() {
-    const [values, setValues] = useState({
-        name: "",
-        day: 0,
-    });
+import { Workout } from "../../@types/types";
 
-    const handleChange = (
-        name: keyof typeof values,
-        value: string | number
-    ) => {
-        setValues(
-            (prev) =>
-                (prev = {
-                    ...prev,
-                    [name]: value,
-                })
-        );
-    };
+interface WorkoutInputsProps {
+    handleNameAndDay: (name: keyof Workout, value: string | number) => void;
+}
 
+export default function WorkoutInputs({
+    handleNameAndDay,
+}: WorkoutInputsProps) {
     return (
         <div className="flex justify-between">
             <label htmlFor="" className=" flex flex-col gap-2">
@@ -31,8 +20,8 @@ export default function WorkoutInputs() {
                     name="name"
                     className="border-0 border-b-2 border-gray-300 bg-transparent appearance-none dark:text-white dark:border-gray-600 dark:focus:border-orange-primary focus:outline-none"
                     onChange={(e) =>
-                        handleChange(
-                            e.target.name as keyof typeof values,
+                        handleNameAndDay(
+                            e.target.name as keyof Workout,
                             e.target.value
                         )
                     }
@@ -45,8 +34,8 @@ export default function WorkoutInputs() {
                     id=""
                     className=" text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-orange-primary focus:outline-none focus:ring-0 focus:border-border-orange-primary peer"
                     onChange={(e) =>
-                        handleChange(
-                            e.target.name as keyof typeof values,
+                        handleNameAndDay(
+                            e.target.name as keyof Workout,
                             Number(e.target.value)
                         )
                     }
