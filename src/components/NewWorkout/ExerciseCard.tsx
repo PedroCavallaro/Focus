@@ -11,7 +11,8 @@ interface ExerciseCardProps {
     gifUrl: string;
     handleExerciseConfig: (
         exercise: keyof Workout,
-        id: string,
+        id: number,
+        gifUrl: string,
         reps?: number,
         kg?: number
     ) => void;
@@ -30,13 +31,15 @@ const ExerciseConfig = ({
             </p>
             <Input
                 type="number"
-                onChange={(e) =>
+                onChange={(e) => {
                     handleExerciseConfig(
                         exercise as keyof Workout,
-                        "1",
-                        Number(e.target.value)
-                    )
-                }
+                        i,
+                        gifUrl,
+                        Number(e.target.value),
+                        undefined
+                    );
+                }}
                 key={2}
             />
             <Input
@@ -45,7 +48,8 @@ const ExerciseConfig = ({
                 onChange={(e) =>
                     handleExerciseConfig(
                         exercise as keyof Workout,
-                        "1",
+                        i,
+                        gifUrl,
                         undefined,
                         Number(e.target.value)
                     )
@@ -77,13 +81,13 @@ export default function ExerciseCard({
         >
             <div className="flex justify-between flex-grow w-full items-center">
                 <p className="text-black text-2xl p-2">{exercise}</p>
-                <Image
+                {/* <Image
                     src={gifUrl}
                     width={100}
                     height={100}
                     className="object-fill"
                     alt={exercise}
-                />
+                /> */}
             </div>
             <div className="abolute items-center gap-3 w-full h-[18rem] bg-white text-black flex flex-col">
                 <div>

@@ -32,6 +32,7 @@ export default function WorkoutInputs({
                 <select
                     name="day"
                     id=""
+                    defaultValue={"Escolher Dia"}
                     className=" text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-orange-primary focus:outline-none focus:ring-0 focus:border-border-orange-primary peer"
                     onChange={(e) =>
                         handleNameAndDay(
@@ -40,6 +41,9 @@ export default function WorkoutInputs({
                         )
                     }
                 >
+                    <option value="Escolher Dia" disabled hidden>
+                        Escolher Dia
+                    </option>
                     {Object.keys(daysOfTheWeek).map((day, i) => {
                         return (
                             <option

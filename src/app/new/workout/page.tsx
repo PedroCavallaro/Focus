@@ -33,15 +33,26 @@ export default function Page() {
                             {data![muscleId].exercises.map(
                                 ({ name, description, gifUrl, _id }, i) => {
                                     return (
-                                        <ExerciseCard
-                                            key={i}
-                                            id={_id}
-                                            handleExerciseConfig={
-                                                saveNewExercise
-                                            }
-                                            exercise={name}
-                                            gifUrl={gifUrl}
-                                        />
+                                        <>
+                                            <ExerciseCard
+                                                key={i}
+                                                id={_id}
+                                                handleExerciseConfig={
+                                                    saveNewExercise
+                                                }
+                                                exercise={name}
+                                                gifUrl={"gifUrl"}
+                                            />
+                                            <ExerciseCard
+                                                key={1}
+                                                id={_id}
+                                                handleExerciseConfig={
+                                                    saveNewExercise
+                                                }
+                                                exercise={"teste"}
+                                                gifUrl={"gifUrl"}
+                                            />
+                                        </>
                                     );
                                 }
                             )}

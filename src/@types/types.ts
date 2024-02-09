@@ -11,18 +11,21 @@ export type WorkoutSeries = {
 export type Workout = {
     name: string;
     day: number;
-    exercise: [
-        {
-            exercise: string;
-            gifUrl: string;
-            exec: [
-                {
-                    kg: number;
-                    reps: number;
-                }
-            ];
-        }
-    ];
+    exercises: Exercises;
 };
+
+export type Exercises = [
+    {
+        exercise: string;
+        gifUrl: string;
+        exec: [
+            {
+                i: number;
+                kg: number;
+                reps: number;
+            }
+        ];
+    }
+];
 
 export type AuthResponse = { token: string } & { message: string };
