@@ -1,7 +1,7 @@
 interface DayWorkoutListItemProps {
     index: number;
-    reps: string;
-    kg: string;
+    kg: number | undefined;
+    reps: number | undefined;
 }
 export default function DayWorkoutListItem({
     index,

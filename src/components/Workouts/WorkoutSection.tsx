@@ -29,7 +29,7 @@ export default function WorkoutSection({
                     <div className="flex gap-3 items-center">
                         <p className="text-2xl  font-light">Treinos</p>
                         <button className="rounded-full p-2 mb-1 bg-orange-primary text-black ">
-                            <Link href={"/new/workout"}>
+                            <Link href={"/new/workout"} scroll={false}>
                                 <AiOutlinePlus />
                             </Link>
                         </button>

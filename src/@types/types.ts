@@ -5,8 +5,8 @@ export type DayWorkout = {
     series: Array<WorkoutSeries>;
 };
 export type WorkoutSeries = {
-    text: string;
-    kg: string;
+    kg: number | undefined;
+    reps: number | undefined;
 };
 export type Workout = {
     name: string;
@@ -14,15 +14,27 @@ export type Workout = {
     exercises: Exercises;
 };
 
-export type Exercises = [
-    {
-        exercise: string;
+export type Exercises = {
+    [key: string]: {
         gifUrl: string;
         exec: [
             {
-                i: number;
-                kg: number;
-                reps: number;
+                kg: number | undefined;
+                reps: number | undefined;
+            }
+        ];
+    };
+};
+
+export type ExerciseResponse = [
+    {
+        targetMuscle: string;
+        exercises: [
+            {
+                name: string;
+                description: string;
+                gifUrl: string;
+                _id: string;
             }
         ];
     }

@@ -1,4 +1,3 @@
-import { useNewWorkout } from "@/src/hooks/useNewWorkout";
 import Image from "next/image";
 import { Input } from "../Input";
 import { useRef, useState } from "react";
@@ -16,6 +15,7 @@ interface ExerciseCardProps {
         reps?: number,
         kg?: number
     ) => void;
+    addExerciseIntoWorkout: (exercise: string) => void;
 }
 
 const ExerciseConfig = ({
@@ -23,7 +23,7 @@ const ExerciseConfig = ({
     handleExerciseConfig,
     exercise,
     gifUrl,
-}: ExerciseCardProps & { i: number }) => {
+}: Omit<ExerciseCardProps, "addExerciseIntoWorkout"> & { i: number }) => {
     return (
         <>
             <p className="text-center" key={1}>
@@ -64,6 +64,7 @@ export default function ExerciseCard({
     exercise,
     handleExerciseConfig,
     gifUrl,
+    addExerciseIntoWorkout,
 }: ExerciseCardProps) {
     const [inputsQtd, setInputsQtd] = useState(1);
     const [cardOpen, setCardOpen] = useState(false);
@@ -132,13 +133,18 @@ export default function ExerciseCard({
                     </div>
                     <p>Adicionar serie</p>
                 </button>
-                <button className="bg-orange-primary flex items-center justify-center p-2 w-[50%] rounded-md">
+                <button
+                    className="bg-orange-primary flex items-center justify-center p-2 w-[50%] rounded-md"
+                    onClick={() => {
+                        addExerciseIntoWorkout(exercise);
+                    }}
+                >
                     <p>Salvar</p>
                 </button>
                 <button
                     onClick={() => {
                         handleCardClick();
-                        setInputsQtd((prev) => (prev = 1));
+                        setInputsQtd((prev) => (prev = 0));
                     }}
                     className=" flex items-center justify-center p-2 w-[50%] rounded-md font-light"
                 >
