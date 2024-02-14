@@ -32,7 +32,7 @@ export default function ExercisesPicker({
                                 id={_id}
                                 handleExerciseConfig={saveNewExercise}
                                 exercise={name}
-                                gifUrl={"gifUrl"}
+                                gifUrl={"/supino.gif"}
                             />
                             <ExerciseCard
                                 key={1}
@@ -40,7 +40,7 @@ export default function ExercisesPicker({
                                 id={_id}
                                 handleExerciseConfig={saveNewExercise}
                                 exercise={"teste"}
-                                gifUrl={"gifUrl"}
+                                gifUrl={"/supino.gif"}
                             />
                         </>
                     );

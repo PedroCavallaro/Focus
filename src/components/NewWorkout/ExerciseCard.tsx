@@ -82,18 +82,18 @@ export default function ExerciseCard({
         >
             <div className="flex justify-between flex-grow w-full items-center">
                 <p className="text-black text-2xl p-2">{exercise}</p>
-                {/* <Image
+                <Image
                     src={gifUrl}
                     width={100}
                     height={100}
                     className="object-fill"
                     alt={exercise}
-                /> */}
+                />
             </div>
             <div className="abolute items-center gap-3 w-full h-[18rem] bg-white text-black flex flex-col">
                 <div>
                     <div className="grid grid-cols-3 gap-x-20 px-2  justify-start overflow-scroll ">
-                        <p className="text-center">Serie</p>
+                        <p className="text-center w-20">Serie</p>
                         <p>Reps</p>
                         <p>KG</p>
                     </div>

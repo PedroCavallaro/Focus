@@ -1,20 +1,7 @@
 import { useState } from "react";
 import { useQuery } from "react-query";
 import { serverApi } from "../lib/api";
-
-type ExerciseResponse = [
-    {
-        targetMuscle: string;
-        exercises: [
-            {
-                name: string;
-                description: string;
-                gifUrl: string;
-                _id: string;
-            }
-        ];
-    }
-];
+import { ExerciseResponse } from "../@types/types";
 
 async function getExercises() {
     const { data } = await serverApi.get("exercise/list");

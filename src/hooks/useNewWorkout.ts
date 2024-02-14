@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Exercises, Workout } from "../@types/types";
 
 export function useNewWorkout() {
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
     const [exercises, setExercises] = useState<Exercises>({} as Exercises);
     const [workout, setWorkout] = useState({} as Workout);
 
@@ -25,8 +25,8 @@ export function useNewWorkout() {
                     kg: kg,
                     reps: reps,
                 });
+                return;
             }
-
             exec[id] = {
                 ...exec[id],
                 kg: kg ? kg : exec[id].kg,
@@ -35,6 +35,7 @@ export function useNewWorkout() {
 
             return;
         }
+
         setExercises(
             (prev) =>
                 (prev = {
@@ -52,12 +53,21 @@ export function useNewWorkout() {
         );
         return;
     };
-
     const addExerciseIntoWorkout = (exercise: string) => {
         if (!workout.exercises) {
             workout.exercises = {};
         }
+
         workout.exercises[exercise] = exercises[exercise];
+
+        setWorkout((prev) => (prev = { ...workout }));
+    };
+    const removeExerciseFromWorkout = (name: string) => {
+        delete workout.exercises[name];
+
+        setWorkout((prev) => (prev = { ...workout }));
+
+        console.log(workout);
     };
 
     const handleNameAndDay = (name: keyof Workout, value: string | number) => {
@@ -71,6 +81,7 @@ export function useNewWorkout() {
     };
     return {
         isOpen,
+        removeExerciseFromWorkout,
         addExerciseIntoWorkout,
         handleSaveWorkout,
         workout,

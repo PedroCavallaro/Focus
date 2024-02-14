@@ -1,3 +1,5 @@
+import { DaysOfWeek } from "../util/date";
+
 export type DayWorkout = {
     exercise: string;
     pr: string;
@@ -10,7 +12,7 @@ export type WorkoutSeries = {
 };
 export type Workout = {
     name: string;
-    day: number;
+    day: DaysOfWeek;
     exercises: Exercises;
 };
 
