@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Exercises, Workout } from "../@types/types";
+import { serverApi } from "../lib/api";
+import { getUser } from "../util/user";
 
 export function useNewWorkout() {
     const [isOpen, setIsOpen] = useState(false);
@@ -18,19 +20,19 @@ export function useNewWorkout() {
         reps?: number
     ) => {
         if (exercises && exercises[exercise]) {
-            const { exec } = exercises[exercise];
+            const { execution } = exercises[exercise];
 
-            if (!exec[id]) {
-                exec.push({
+            if (!execution[id]) {
+                execution.push({
                     kg: kg,
                     reps: reps,
                 });
                 return;
             }
-            exec[id] = {
-                ...exec[id],
-                kg: kg ? kg : exec[id].kg,
-                reps: reps ? reps : exec[id].reps,
+            execution[id] = {
+                ...execution[id],
+                kg: kg ? kg : execution[id].kg,
+                reps: reps ? reps : execution[id].reps,
             };
 
             return;
@@ -42,7 +44,7 @@ export function useNewWorkout() {
                     ...prev,
                     [exercise as string]: {
                         gifUrl,
-                        exec: [
+                        execution: [
                             {
                                 kg: kg ? kg : 0,
                                 reps: kg ? kg : 0,
@@ -79,11 +81,23 @@ export function useNewWorkout() {
                 })
         );
     };
+    const saveWorkout = async () => {
+        const user = getUser();
+
+        const res = await serverApi.post("/workout/new", {
+            userId: user.id,
+            workout: workout,
+        });
+
+        console.log(res.data);
+    };
+
     return {
         isOpen,
         removeExerciseFromWorkout,
         addExerciseIntoWorkout,
         handleSaveWorkout,
+        saveWorkout,
         workout,
         handleNameAndDay,
         exercises,

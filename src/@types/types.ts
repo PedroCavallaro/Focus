@@ -19,7 +19,7 @@ export type Workout = {
 export type Exercises = {
     [key: string]: {
         gifUrl: string;
-        exec: [
+        execution: [
             {
                 kg: number | undefined;
                 reps: number | undefined;

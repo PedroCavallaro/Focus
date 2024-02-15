@@ -15,20 +15,3 @@ export const getUser = () => {
     }
     throw new Error("User not authenticated");
 };
-
-const workout = {
-    name: "",
-    day: 0,
-    workout: [
-        {
-            1: {
-                info: [
-                    {
-                        kg: 1,
-                        reps: 1,
-                    },
-                ],
-            },
-        },
-    ],
-};

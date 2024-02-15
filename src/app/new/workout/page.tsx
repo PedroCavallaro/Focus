@@ -17,6 +17,7 @@ export default function Page() {
         addExerciseIntoWorkout,
         workout,
         removeExerciseFromWorkout,
+        saveWorkout,
     } = useNewWorkout();
     const { data, handleClick, muscleId, isLoading } = useExercises();
     const isMuscleSelected = muscleId !== -1;
@@ -27,6 +28,7 @@ export default function Page() {
                 isWorkoutOpen={isOpen}
                 day={workout.day}
                 name={workout.name}
+                saveWorkout={saveWorkout}
             >
                 {workout?.exercises && (
                     <>
@@ -38,7 +40,7 @@ export default function Page() {
                                     exercise={e}
                                     gif=""
                                     pr=""
-                                    series={workout.exercises[e].exec}
+                                    series={workout.exercises[e].execution}
                                     removeExerciseFromWorkout={
                                         removeExerciseFromWorkout
                                     }

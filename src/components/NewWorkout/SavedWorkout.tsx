@@ -8,6 +8,7 @@ interface SavedWorkoutProps {
     children: ReactNode;
     name: string | undefined;
     day: DaysOfWeek | undefined;
+    saveWorkout: () => Promise<void>;
 }
 
 export default function SavedWorkout({
@@ -16,6 +17,7 @@ export default function SavedWorkout({
     isWorkoutOpen,
     name,
     day,
+    saveWorkout,
 }: SavedWorkoutProps) {
     return (
         <div
@@ -31,7 +33,10 @@ export default function SavedWorkout({
                         <CgChevronLeft size={20} />
                     </button>
                     <div className=" font-light flex justify-between items-center">
-                        <p className="text-2xl">{name && name}</p>
+                        <p className="text-2xl w-32 overflow-hidden">
+                            {name &&
+                                name.toString().substring(0, 8).concat("...")}
+                        </p>
                         <p className="text-md"> {daysOfTheWeek[day!]}</p>
                     </div>
                     <div className="flex flex-col gap-5 realative overflow-scroll ">
@@ -39,7 +44,10 @@ export default function SavedWorkout({
                     </div>
                 </div>
                 <div className="absolute bottom-10 w-full flex justify-center items-center p-2">
-                    <button className="bg-orange-primary w-full h-12 rounded-lg text-black">
+                    <button
+                        onClick={saveWorkout}
+                        className="bg-orange-primary w-full h-12 rounded-lg text-black"
+                    >
                         Salvar
                     </button>
                 </div>
