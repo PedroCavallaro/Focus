@@ -6,7 +6,6 @@ export default function AllWorkOutsSection({
 }: {
     workouts: Array<Workout> | undefined;
 }) {
-    console.log(workouts);
     return (
         <>
             {workouts?.map((e, i) => (

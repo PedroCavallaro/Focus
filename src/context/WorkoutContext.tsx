@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useContext, useState } from "react";
+import { ReactNode, createContext, useContext, useMemo, useState } from "react";
 import { serverApi } from "../lib/api";
 import { Exercises, Workout } from "../@types/types";
 import { getUser } from "../util/user";
@@ -33,9 +33,10 @@ export const WorkOutProvider = ({ children }: { children: ReactNode }) => {
 
     const day = new Date().getDay().toString() as DaysOfWeek;
 
-    const workoutOfTheDay: Workout[] | undefined = workouts?.filter(
-        (e) => e.day == day
-    );
+    const workoutOfTheDay: Workout[] | undefined = useMemo(() => {
+        return workouts?.filter((e) => e.day == day);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [day]);
 
     let exercises = undefined;
 
