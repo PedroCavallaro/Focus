@@ -1,4 +1,11 @@
-import { ReactNode, createContext, useContext, useMemo, useState } from "react";
+import {
+    ReactNode,
+    createContext,
+    useCallback,
+    useContext,
+    useMemo,
+    useState,
+} from "react";
 import { serverApi } from "../lib/api";
 import { Exercises, Workout } from "../@types/types";
 import { getUser } from "../util/user";
@@ -16,15 +23,19 @@ interface WorkOutContextProps {
 
 const WorkoutContext = createContext({} as WorkOutContextProps);
 
-const getUserWorkout = async () => {
-    const user = getUser();
-    const res = await serverApi.get(`/workout/user/${user.id}`);
-
-    return res.data as Workout[];
-};
-
 export const WorkOutProvider = ({ children }: { children: ReactNode }) => {
     const [isAll, setIsAll] = useState(false);
+    const [exercises, setExercises] = useState<Exercises>();
+    const getUserWorkout = useCallback(async () => {
+        const user = getUser();
+
+        if (user) {
+            const res = await serverApi.get(`/workout/user/${user?.id}`);
+
+            return res.data as Workout[];
+        }
+        return undefined;
+    }, []);
     const { data: workouts, isLoading } = useQuery("workout", getUserWorkout);
 
     const switchView = () => {
@@ -38,12 +49,10 @@ export const WorkOutProvider = ({ children }: { children: ReactNode }) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [day]);
 
-    let exercises = undefined;
-
     if (workoutOfTheDay) {
-        exercises = workoutOfTheDay[0].exercises;
+        setExercises((prev) => (prev = workoutOfTheDay[0].exercises));
     }
-
+    const hasWorkout = workoutOfTheDay?.length ?? null;
     return (
         <WorkoutContext.Provider
             value={{

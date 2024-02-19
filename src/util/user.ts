@@ -1,4 +1,4 @@
-import { jwtDecode } from "jwt-decode";
+import * as jwt from "jsonwebtoken";
 import { parseCookies } from "nookies";
 import { string } from "zod";
 
@@ -10,8 +10,13 @@ type User = {
 export const getUser = () => {
     const { token } = parseCookies();
     if (token) {
-        const decodedToken: User = jwtDecode(token);
-        return decodedToken;
+        try {
+            const decodedToken: User = jwt.verify(token, "asdasd") as User;
+
+            return decodedToken;
+        } catch (err) {
+            return null;
+        }
     }
-    throw new Error("User not authenticated");
+    return null;
 };

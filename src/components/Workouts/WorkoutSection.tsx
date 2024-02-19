@@ -6,7 +6,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import Link from "next/link";
 interface WorkoutSectionProps {
     children: ReactNode;
-    workoutOfTheDay: string;
+    workoutOfTheDay: string | undefined;
 }
 
 export default function WorkoutSection({
